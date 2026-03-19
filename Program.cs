@@ -1,4 +1,5 @@
-﻿using System;
+using System;
+using System.ComponentModel;
 
 namespace CompositeComputadora
 {
@@ -39,7 +40,7 @@ namespace CompositeComputadora
         static void ArmarPC(string nombre, string tipo)
         {
             Directorio pc = new Directorio(nombre, tipo);
-            Directorio gabinete = new Directorio("Gabinete");
+            Directorio componentes= new Directorio("Componentes");
 
             
             int precioCPU1, precioCPU2;
@@ -58,20 +59,20 @@ namespace CompositeComputadora
                     precioMOU1 = 1200; precioMOU2 = 600;
                 }
             else if (tipo == "Media") 
-            {
-                precioCPU1 = 3000; precioCPU2 = 2800;
-                precioRAM1 = 1500; precioRAM2 = 800;
-                precioDISCO1 = 2000; precioDISCO2 = 700;
-                precioTEC1 = 800; precioTEC2 = 500;
-                precioMOU1 = 600; precioMOU2 = 300;
-            }
+                {
+                    precioCPU1 = 3000; precioCPU2 = 2800;
+                    precioRAM1 = 1500; precioRAM2 = 800;
+                    precioDISCO1 = 2000; precioDISCO2 = 700;
+                    precioTEC1 = 800; precioTEC2 = 500;
+                    precioMOU1 = 600; precioMOU2 = 300;
+                }
             else // ECONOMICO
-            {
-                precioCPU1 = 2000; precioCPU2 = 1500;
-                precioRAM1 = 800; precioRAM2 = 500;
-                precioDISCO1 = 700; precioDISCO2 = 400;
-                precioTEC1 = 400; precioTEC2 = 250;
-                precioMOU1 = 300; precioMOU2 = 150;
+                {
+                    precioCPU1 = 2000; precioCPU2 = 1500;
+                    precioRAM1 = 800; precioRAM2 = 500;
+                    precioDISCO1 = 700; precioDISCO2 = 400;
+                    precioTEC1 = 400; precioTEC2 = 250;
+                    precioMOU1 = 300; precioMOU2 = 150;
             }
 
             Console.Clear();
@@ -84,9 +85,9 @@ namespace CompositeComputadora
             int cpu = int.Parse(Console.ReadLine());
 
             if (cpu == 1)
-                gabinete.AgregarHijo(new Archivo("Intel i5", precioCPU1));
+                componentes.AgregarHijo(new Archivo("Intel i5", precioCPU1));
             else
-                gabinete.AgregarHijo(new Archivo("Ryzen 5", precioCPU2));
+                componentes.AgregarHijo(new Archivo("Ryzen 5", precioCPU2));
 
             
             Console.WriteLine("\nRAM:");
@@ -95,9 +96,9 @@ namespace CompositeComputadora
             int ram = int.Parse(Console.ReadLine());
 
             if (ram == 1)
-                gabinete.AgregarHijo(new Archivo("RAM 16GB", precioRAM1));
+                componentes.AgregarHijo(new Archivo("RAM 16GB", precioRAM1));
             else
-                gabinete.AgregarHijo(new Archivo("RAM 8GB", precioRAM2));
+                componentes.AgregarHijo(new Archivo("RAM 8GB", precioRAM2));
 
 
             Console.WriteLine("\nAlmacenamiento:");
@@ -106,9 +107,9 @@ namespace CompositeComputadora
             int disco = int.Parse(Console.ReadLine());
 
             if (disco == 1)
-                gabinete.AgregarHijo(new Archivo("SSD 1TB", precioDISCO1));
+                componentes.AgregarHijo(new Archivo("SSD 1TB", precioDISCO1));
             else
-                gabinete.AgregarHijo(new Archivo("HDD 500GB", precioDISCO2));
+                componentes.AgregarHijo(new Archivo("HDD 500GB", precioDISCO2));
 
         
             Console.WriteLine("\nTeclado:");
@@ -117,9 +118,9 @@ namespace CompositeComputadora
             int teclado = int.Parse(Console.ReadLine());
 
             if (teclado == 1)
-                gabinete.AgregarHijo(new Archivo("Teclado Logitech", precioTEC1));
+                componentes.AgregarHijo(new Archivo("Teclado Logitech", precioTEC1));
             else
-                gabinete.AgregarHijo(new Archivo("Teclado Redragon", precioTEC2));
+                componentes.AgregarHijo(new Archivo("Teclado Redragon", precioTEC2));
 
 
             Console.WriteLine("\nMouse:");
@@ -128,11 +129,11 @@ namespace CompositeComputadora
             int mouse = int.Parse(Console.ReadLine());
 
             if (mouse == 1)
-                gabinete.AgregarHijo(new Archivo("Mouse Logitech", precioMOU1));
+                componentes.AgregarHijo(new Archivo("Mouse Logitech", precioMOU1));
             else
-                gabinete.AgregarHijo(new Archivo("Mouse Genius", precioMOU2));
+                componentes.AgregarHijo(new Archivo("Mouse Genius", precioMOU2));
 
-            pc.AgregarHijo(gabinete);
+            pc.AgregarHijo(componentes);
 
     
             Console.Clear();
